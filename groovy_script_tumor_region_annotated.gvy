@@ -2,7 +2,7 @@ import qupath.lib.images.servers.LabeledImageServer
 
 def imageData = getCurrentImageData()
 
-// Define output path (relative to project)
+// Define output path for tumor and non-tumor patches
 def name = GeneralTools.getNameWithoutExtension(imageData.getServer().getMetadata().getName())
 def pathOutputT = buildFilePath('D:/user/zahraali/Tumor/', 'Tumor_' + name)
 mkdirs(pathOutputT)
@@ -15,7 +15,7 @@ double requestedPixelSize = 0.5
 // Convert to downsample
 double downsample = requestedPixelSize / imageData.getServer().getPixelCalibration().getAveragedPixelSize()
 
-// Create an ImageServer where the pixels are derived from annotations
+// Create an ImageServer function where the patches are derived from tumor annotations
 def labelServer = new LabeledImageServer.Builder(imageData)
     .backgroundLabel(255, ColorTools.WHITE) // Specify background label (usually 0 or 255)
     .downsample(downsample)    // Choose server resolution; this should match the resolution at which tiles are exported
@@ -24,7 +24,7 @@ def labelServer = new LabeledImageServer.Builder(imageData)
     .build()
 
 
-// Create an exporter that requests corresponding tiles from the original & labeled image servers
+// Format tumor patches + size of the patches without overlap
 new TileExporter(imageData)
     .downsample(downsample)     // Define export resolution
     .imageExtension('.png')     // Define file extension for original pixels (often .tif, .jpg, '.png' or '.ome.tif')
@@ -34,10 +34,10 @@ new TileExporter(imageData)
     .overlap(0)              // Define overlap, in pixel units at the export resolution
     .writeTiles(pathOutputT)     // Write tiles to the specified directory
 
-print 'Tumor tiling is done!'
-print '...'
+print 'Extracting the Tumor patches has been done!'
 
-// Create an ImageServer where the pixels are derived from annotations
+
+// Create an ImageServer function where the patches are derived from non-tumor annotations
 def labelServerN = new LabeledImageServer.Builder(imageData)
     .backgroundLabel(255, ColorTools.WHITE) // Specify background label (usually 0 or 255)
     .downsample(downsample)    // Choose server resolution; this should match the resolution at which tiles are exported
@@ -46,7 +46,7 @@ def labelServerN = new LabeledImageServer.Builder(imageData)
     .build()
 
 
-// Create an exporter that requests corresponding tiles from the original & labeled image servers
+// Format non-tumor patches + size of the patches without overlap
 new TileExporter(imageData)
     .downsample(downsample)     // Define export resolution
     .imageExtension('.png')     // Define file extension for original pixels (often .tif, .jpg, '.png' or '.ome.tif')
@@ -57,6 +57,7 @@ new TileExporter(imageData)
     .writeTiles(pathOutputN)     // Write tiles to the specified directory
     
 
-print 'Non-tumor Tissue tiling is done!'
+print 'Extracting the non-tumor patches has been done!'
+
 
 print 'Finished!'
