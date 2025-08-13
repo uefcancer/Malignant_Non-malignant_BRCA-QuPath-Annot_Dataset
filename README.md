@@ -27,6 +27,7 @@ For every extracted patch, the script records:
 ---
 
 **supplementary_file.csv**
+
 Detailed information on the number of annotated regions and extracted patches per WSI, along with corresponding molecular subtypes, is provided in the supplementary file.
 
 ---
