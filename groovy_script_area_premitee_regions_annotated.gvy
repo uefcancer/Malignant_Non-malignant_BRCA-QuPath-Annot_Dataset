@@ -10,7 +10,7 @@ def annotations = QPEx.getAnnotationObjects()
 
 def name = GeneralTools.getNameWithoutExtension(server.getMetadata().getName())
 
-def outputFile = new File('C:/Users/zahraali/Desktop/region_geometry_summary.tsv')
+def outputFile = new File('C:/Users/zahraali/Desktop/region_geometry_summary.tsv') # Path for saving the outcome
 
 if (!outputFile.exists()) {
     outputFile.text = "WSI_Name\tClass\tArea_µm2\tPerimeter_µm\n"
@@ -30,3 +30,4 @@ for (annotation in annotations) {
 }
 
 print "Area and Perimeter successfully exported to: ${outputFile.getAbsolutePath()}"
+
