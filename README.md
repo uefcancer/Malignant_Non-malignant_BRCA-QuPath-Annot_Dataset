@@ -1,6 +1,6 @@
 # **Malignant and Non-malignant Patches Classification using a Contrastive Learning Algorithm**
 
-The classifier_tumor_nontumor_patches_code.ipynb code provides an implementation of a classifier for distinguishing between malignant and non-malignant tumor patches in breast cancer Whole Slide Images (WSIs).
+The "classifier_malignant_nonmalignant_patches_code.ipynb" code provides an implementation of a classifier for distinguishing between malignant and non-malignant tumor patches in breast cancer Whole Slide Images (WSIs).
 
 The workflow consists of:
 
