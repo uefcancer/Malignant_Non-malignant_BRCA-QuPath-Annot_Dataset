@@ -2,11 +2,11 @@ import qupath.lib.images.servers.LabeledImageServer
 
 def imageData = getCurrentImageData()
 
-// Define output path for tumor and non-tumor patches
+// Define output path for Malignant and Non-malignant patches
 def name = GeneralTools.getNameWithoutExtension(imageData.getServer().getMetadata().getName())
-def pathOutputT = buildFilePath('D:/user/zahraali/Tumor/', 'Tumor_' + name)
+def pathOutputT = buildFilePath('D:/user/zahraali/Malignant/', 'Malignant_' + name)
 mkdirs(pathOutputT)
-def pathOutputN = buildFilePath('D:/user/zahraali/Non-tumor/', 'Non-tumor_' + name)
+def pathOutputN = buildFilePath('D:/user/zahraali/Non-malignant/', 'Non-malignant_' + name)
 mkdirs(pathOutputN)
 
 // Define output resolution
@@ -15,16 +15,16 @@ double requestedPixelSize = 0.5
 // Convert to downsample
 double downsample = requestedPixelSize / imageData.getServer().getPixelCalibration().getAveragedPixelSize()
 
-// Create an ImageServer function where the patches are derived from tumor annotations
+// Create an ImageServer function where the patches are derived from Malignant annotations
 def labelServer = new LabeledImageServer.Builder(imageData)
     .backgroundLabel(255, ColorTools.WHITE) // Specify background label (usually 0 or 255)
     .downsample(downsample)    // Choose server resolution; this should match the resolution at which tiles are exported
-    .addLabel('Tumor', 1)      // Choose output labels (the order matters!)
+    .addLabel('Malignant', 1)      // Choose output labels (the order matters!)
     .multichannelOutput(false)  // If true, each label is a different channel (required for multiclass probability)
     .build()
 
 
-// Format tumor patches + size of the patches without overlap
+// Format Malignant patches + size of the patches without overlap
 new TileExporter(imageData)
     .downsample(downsample)     // Define export resolution
     .imageExtension('.png')     // Define file extension for original pixels (often .tif, .jpg, '.png' or '.ome.tif')
@@ -34,19 +34,19 @@ new TileExporter(imageData)
     .overlap(0)              // Define overlap, in pixel units at the export resolution
     .writeTiles(pathOutputT)     // Write tiles to the specified directory
 
-print 'Extracting the Tumor patches has been done!'
+print 'Extracting the Malignant patches has been done!'
 
 
-// Create an ImageServer function where the patches are derived from non-tumor annotations
+// Create an ImageServer function where the patches are derived from Non-malignant annotations
 def labelServerN = new LabeledImageServer.Builder(imageData)
     .backgroundLabel(255, ColorTools.WHITE) // Specify background label (usually 0 or 255)
     .downsample(downsample)    // Choose server resolution; this should match the resolution at which tiles are exported
-    .addLabel('Non-tumor', 1)      // Choose output labels (the order matters!)
+    .addLabel('Non-malignant', 1)      // Choose output labels (the order matters!)
     .multichannelOutput(false)  // If true, each label is a different channel (required for multiclass probability)
     .build()
 
 
-// Format non-tumor patches + size of the patches without overlap
+// Format Non-malignant patches + size of the patches without overlap
 new TileExporter(imageData)
     .downsample(downsample)     // Define export resolution
     .imageExtension('.png')     // Define file extension for original pixels (often .tif, .jpg, '.png' or '.ome.tif')
@@ -57,7 +57,8 @@ new TileExporter(imageData)
     .writeTiles(pathOutputN)     // Write tiles to the specified directory
     
 
-print 'Extracting the non-tumor patches has been done!'
+print 'Extracting the Non-malignant patches has been done!'
 
 
 print 'Finished!'
+
