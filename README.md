@@ -24,11 +24,26 @@ For every extracted patch, the script records:
 - Area  
 - Perimeter
 
+**groovy_script_calculation_of_tissue_area_and_perimeter.gvy**
+Calculating the tissue area and perimeter of each WSIs
+
 ---
 
 **supplementary_file.csv**
 
 Detailed information on the number of annotated regions and extracted patches per WSI, along with corresponding molecular subtypes, is provided in the supplementary file.
+
+---
+
+**area and perimeter related to the malignant and nonmalignant regions.csv**
+
+Information on the Area and Primeter of the malignant and non-malignant regions, which have been annotated in WSIs.
+
+---
+
+**proportion_of_tissue_area_annotations.csv**
+
+The proportion of tissue area annotated as malignant or non-malignant in relation to the total tissue area for each WSI.
 
 ---
 
