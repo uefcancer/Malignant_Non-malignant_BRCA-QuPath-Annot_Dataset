@@ -53,3 +53,5 @@ The classifier code has been executed in Google Colab to demonstrate its correct
 
 To open and run the notebook directly, use the link below:  
 https://colab.research.google.com/drive/1cqkeZFd_vGNzVPla8BvB4mzMjRSEX9mV#scrollTo=6CKeBxYTUSv8
+
+## **Please remember to cite our paper if you use the scripts!**
