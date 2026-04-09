@@ -55,3 +55,6 @@ To open and run the notebook directly, use the link below:
 https://colab.research.google.com/drive/1cqkeZFd_vGNzVPla8BvB4mzMjRSEX9mV#scrollTo=6CKeBxYTUSv8
 
 ## **Please remember to cite our paper if you use the scripts!**
+
+**Cite this article:**
+Shahraki, Z.A., Jokelainen, O., Valkonen, M. et al. Malignant vs. Non-malignant Annotations on TCGA Breast Cancer Whole Slide Images for AI Analysis. Sci Data (2026). https://doi.org/10.1038/s41597-026-07106-5
