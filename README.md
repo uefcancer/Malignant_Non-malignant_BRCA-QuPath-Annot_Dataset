@@ -58,3 +58,6 @@ https://colab.research.google.com/drive/1cqkeZFd_vGNzVPla8BvB4mzMjRSEX9mV#scroll
 
 **Cite this article:**
 Shahraki, Z.A., Jokelainen, O., Valkonen, M. et al. Malignant vs. Non-malignant Annotations on TCGA Breast Cancer Whole Slide Images for AI Analysis. Sci Data (2026). https://doi.org/10.1038/s41597-026-07106-5
+
+
+<img width="1472" height="1874" alt="Figure1" src="https://github.com/user-attachments/assets/c78240bc-d4a0-4bdc-8b78-a369b0240100" />
